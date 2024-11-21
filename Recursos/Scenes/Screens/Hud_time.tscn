@@ -1,0 +1,221 @@
+[gd_scene load_steps=18 format=3 uid="uid://c3o733tgqaa4i"]
+
+[ext_resource type="Script" path="res://Recursos/Scripts/times.gd" id="1_au2x3"]
+[ext_resource type="Texture2D" uid="uid://kpjfpnpr28ch" path="res://Recursos/Rocky Roads/Objects/flag.png" id="2_ud1hq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sukms"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kklc7"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjkcm"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kpm3"]
+bg_color = Color(0.517647, 0, 0.0352941, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihrq0"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dml35"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhu7o"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wxu4"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5sp5"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6pnq"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_863wq"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdfnu"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua24w"]
+atlas = ExtResource("2_ud1hq")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4g13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihrq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dml35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhu7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wxu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5sp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6pnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_863wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdfnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua24w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb537"]
+size = Vector2(17.5, 38.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("1_au2x3")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 30.0
+color = Color(0, 0.341176, 0.341176, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.327
+anchor_bottom = 0.04
+offset_left = 1003.0
+offset_top = 3.0
+offset_right = 654.296
+offset_bottom = 3.08
+text = "100"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 56.0
+offset_bottom = 27.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_sukms")
+text = "Pausa"
+
+[node name="menu" type="Node2D" parent="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 436.0
+offset_top = 153.0
+offset_right = 723.0
+offset_bottom = 525.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.435294, 0.427451, 1)
+
+[node name="Pausa" type="Label" parent="CanvasLayer/menu"]
+offset_left = 546.0
+offset_top = 175.0
+offset_right = 666.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Pausado"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/menu"]
+offset_left = 484.0
+offset_top = 234.0
+offset_right = 675.0
+offset_bottom = 451.0
+theme_override_constants/separation = 30
+
+[node name="continuar" type="Button" parent="CanvasLayer/menu/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kklc7")
+text = "Continuar"
+
+[node name="reinicio" type="Button" parent="CanvasLayer/menu/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tjkcm")
+text = "Reinicio"
+
+[node name="Musica" type="Label" parent="CanvasLayer/menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Musica"
+
+[node name="Sonido" type="Label" parent="CanvasLayer/menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Sonido
+"
+
+[node name="Musicaslider" type="HSlider" parent="CanvasLayer/menu"]
+offset_left = 505.0
+offset_top = 374.0
+offset_right = 657.0
+offset_bottom = 390.0
+min_value = 50.0
+value = 50.0
+
+[node name="Sonidoslider" type="HSlider" parent="CanvasLayer/menu"]
+offset_left = 504.0
+offset_top = 415.0
+offset_right = 659.0
+offset_bottom = 490.0
+min_value = 50.0
+value = 50.0
+
+[node name="Salir" type="Button" parent="CanvasLayer/menu"]
+offset_left = 544.0
+offset_top = 479.0
+offset_right = 622.0
+offset_bottom = 523.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpm3")
+text = "Salir
+"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(9863, -109)
+scale = Vector2(1.56251, 2.375)
+sprite_frames = SubResource("SpriteFrames_j4g13")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.72446
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9860, -107.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_jb537")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/continuar" to="CanvasLayer" method="_on_continuar_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/reinicio" to="CanvasLayer" method="_on_reinicio_pressed"]
+[connection signal="value_changed" from="CanvasLayer/menu/Musicaslider" to="CanvasLayer" method="_on_musicaslider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/menu/Sonidoslider" to="CanvasLayer" method="_on_sonidoslider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/menu/Salir" to="CanvasLayer" method="_on_salir_pressed"]
+[connection signal="body_entered" from="Area2D" to="CanvasLayer" method="_on_area_2d_body_entered"]

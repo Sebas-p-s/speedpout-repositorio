@@ -1,0 +1,132 @@
+[gd_scene load_steps=14 format=3 uid="uid://dkx5dyep43kuh"]
+
+[ext_resource type="PackedScene" uid="uid://otoc23mwb3m8" path="res://Recursos/Scenes/Paralax_back/parallax_background.tscn" id="1_ep3pw"]
+[ext_resource type="PackedScene" uid="uid://dbcxohwlopngg" path="res://Recursos/Scenes/Chracters/oveja.tscn" id="1_jugx2"]
+[ext_resource type="PackedScene" uid="uid://c3o733tgqaa4i" path="res://Recursos/Scenes/Screens/Hud_time.tscn" id="1_swwq7"]
+[ext_resource type="PackedScene" uid="uid://ck8sumoscoeu7" path="res://Recursos/Scenes/Places/Mapa.tscn" id="3_dyl6m"]
+[ext_resource type="PackedScene" uid="uid://bxbuousthyuw0" path="res://Recursos/Trampolin/trampoline.tscn" id="4_ccipu"]
+[ext_resource type="PackedScene" uid="uid://b5dk4mwuwy6cp" path="res://Recursos/Pltaformas mov/mov_plataform.tscn" id="4_urmcv"]
+[ext_resource type="AudioStream" uid="uid://cjqcecpeyr687" path="res://Recursos/Music/Undertale OST_ 014 - Heartache.mp3" id="7_kh1vf"]
+[ext_resource type="Script" path="res://Recursos/Scenes/Screens/Backgroundaudio.gd" id="8_s5tc8"]
+[ext_resource type="PackedScene" uid="uid://dvk6pcuvuxd0r" path="res://Recursos/Scenes/Screens/Deathzone_2d.tscn" id="9_di1ne"]
+
+[sub_resource type="Curve2D" id="Curve2D_hw2rv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2442, -40, 0, 0, 0, 0, 2690, -43, 0, 0, 0, 0, 3063, -42, 0, 0, 0, 0, 3261, -217, 0, 0, 0, 0, 3462, -62, 0, 0, 0, 0, 3753, -62, 0, 0, 0, 0, 3945, -62)
+}
+point_count = 7
+
+[sub_resource type="Animation" id="Animation_y2ofr"]
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_4uwqe"]
+resource_name = "move"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pevta"]
+_data = {
+"RESET": SubResource("Animation_y2ofr"),
+"move": SubResource("Animation_4uwqe")
+}
+
+[node name="Pantalla" type="Node2D"]
+
+[node name="time" parent="." instance=ExtResource("1_swwq7")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_ep3pw")]
+
+[node name="oveja" parent="." groups=["Player"] instance=ExtResource("1_jugx2")]
+position = Vector2(-45, -43)
+
+[node name="TileMap" parent="." instance=ExtResource("3_dyl6m")]
+position = Vector2(1, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="Trampoline" parent="." instance=ExtResource("4_ccipu")]
+position = Vector2(4262, -227)
+
+[node name="Trampoline2" parent="." instance=ExtResource("4_ccipu")]
+position = Vector2(5920, -299)
+
+[node name="Trampoline3" parent="." instance=ExtResource("4_ccipu")]
+position = Vector2(6196, -180)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-81, 11)
+curve = SubResource("Curve2D_hw2rv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(2442, -40)
+rotation = 0.00214132
+rotates = false
+loop = false
+
+[node name="AnimatableBody2D" parent="Path2D/PathFollow2D" instance=ExtResource("4_urmcv")]
+rotation = -0.00214132
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
+autoplay = "RESET"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_pevta")
+}
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.00001
+offset_top = -274.0
+offset_right = 330.0
+offset_bottom = -248.0
+scale = Vector2(0.931379, 1.36585)
+text = "CREADO POR: SEBASTIAN PACHON S. "
+
+[node name="Background audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kh1vf")
+volume_db = -11.362
+autoplay = true
+bus = &"Musicasl"
+script = ExtResource("8_s5tc8")
+
+[node name="Deathzone" parent="." instance=ExtResource("9_di1ne")]
+visible = false
+position = Vector2(4357, -135)
+
+[node name="Deathzone2" parent="." instance=ExtResource("9_di1ne")]
+visible = false
+position = Vector2(-114, -118)
+scale = Vector2(0.004, 0.02)
+
+[node name="Fin" type="Label" parent="."]
+offset_left = 9786.0
+offset_top = -209.0
+offset_right = 10063.0
+offset_bottom = -178.0
+text = "Este es el final , Gracias por jugar  :P
+"
+
+[connection signal="finished" from="Background audio" to="Background audio" method="_on_finished"]

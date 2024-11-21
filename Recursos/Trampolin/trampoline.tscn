@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxbuousthyuw0"]
+
+[ext_resource type="Texture2D" uid="uid://bjhsywrm2u0xr" path="res://Recursos/Rocky Roads/Objects/bounce pad.png" id="1_1qkku"]
+[ext_resource type="Script" path="res://Recursos/Trampolin/trampoline.gd" id="1_klthd"]
+[ext_resource type="AudioStream" uid="uid://ene3uf004wj5" path="res://Recursos/Music/Boing sound effect..mp3" id="3_dyfqu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr7gy"]
+atlas = ExtResource("1_1qkku")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw2kv"]
+atlas = ExtResource("1_1qkku")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oorfd"]
+atlas = ExtResource("1_1qkku")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rabcu"]
+atlas = ExtResource("1_1qkku")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ivk1"]
+atlas = ExtResource("1_1qkku")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6n02t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr7gy")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw2kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oorfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rabcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ivk1")
+}],
+"loop": false,
+"name": &"launch",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgawc"]
+size = Vector2(6.83333, 0.683332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0rsj"]
+size = Vector2(13.65, 3.41667)
+
+[node name="Trampoline" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_klthd")
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 14)
+scale = Vector2(1.7, 1.7)
+sprite_frames = SubResource("SpriteFrames_6n02t")
+animation = &"launch"
+frame = 3
+frame_progress = 1.0
+
+[node name="act_area" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="act_area"]
+position = Vector2(0.666667, 11.175)
+shape = SubResource("RectangleShape2D_cgawc")
+debug_color = Color(0, 0.623529, 0.556863, 0.419608)
+
+[node name="Collision" type="StaticBody2D" parent="."]
+scale = Vector2(2, 2)
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(0.925, 18.9583)
+shape = SubResource("RectangleShape2D_k0rsj")
+debug_color = Color(0.984314, 0.870588, 0.952941, 0.419608)
+
+[node name="boing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dyfqu")
+volume_db = 8.78
+bus = &"Sonidosl"
+
+[connection signal="body_entered" from="act_area" to="." method="_on_act_area_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjqcecpeyr687"
+path="res://.godot/imported/Undertale OST_ 014 - Heartache.mp3-ef043fea82bb51a9399e3612d697ded5.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Music/Undertale OST_ 014 - Heartache.mp3"
+dest_files=["res://.godot/imported/Undertale OST_ 014 - Heartache.mp3-ef043fea82bb51a9399e3612d697ded5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

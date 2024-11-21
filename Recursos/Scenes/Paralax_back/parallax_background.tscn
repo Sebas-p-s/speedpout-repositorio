@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://otoc23mwb3m8"]
+
+[ext_resource type="Texture2D" uid="uid://witf4gtxidj7" path="res://Recursos/Backgrounds/8.png" id="1_y4v7o"]
+[ext_resource type="Texture2D" uid="uid://b0cq8nuqluxo0" path="res://Recursos/Backgrounds/5.png" id="3_qubgn"]
+[ext_resource type="Texture2D" uid="uid://d0cm6hmwm6d0g" path="res://Recursos/Backgrounds/4.png" id="4_12lag"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Fondo" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1152, 2)
+
+[node name="8" type="Sprite2D" parent="."]
+position = Vector2(575.75, 324.75)
+scale = Vector2(2.99609, 3.00694)
+texture = ExtResource("1_y4v7o")
+
+[node name="Arboles Oscuros" type="ParallaxLayer" parent="."]
+position = Vector2(574, 326)
+scale = Vector2(2.98698, 2.99537)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(575, 327)
+scale = Vector2(3, 2.99074)
+texture = ExtResource("3_qubgn")
+
+[node name="Arbol verdes" type="ParallaxLayer" parent="."]
+position = Vector2(574, 326)
+scale = Vector2(2.98698, 2.99537)
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(575, 313.25)
+scale = Vector2(2.99479, 3.11806)
+texture = ExtResource("4_12lag")

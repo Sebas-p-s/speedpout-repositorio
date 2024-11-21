@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvk6pcuvuxd0r"]
+
+[ext_resource type="Script" path="res://Recursos/Scripts/Deathzone_2d.gd" id="1_37ddf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2t1t"]
+size = Vector2(28117.5, 30.5)
+
+[node name="Deathzone" type="Node2D" groups=["Deathzone"]]
+script = ExtResource("1_37ddf")
+
+[node name="Reset" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
+position = Vector2(10376.3, 175)
+shape = SubResource("RectangleShape2D_d2t1t")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="area_entered" from="Reset" to="." method="_on_reset_area_entered"]
